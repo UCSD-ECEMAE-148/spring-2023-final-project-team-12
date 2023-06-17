@@ -13,6 +13,9 @@
 
 ## Robot Schematic 
 
+![d8](https://github.com/UCSD-ECEMAE-148/spring-2023-final-project-team-12/assets/130114883/e5e29197-17f3-4b9f-b6f5-b40c419082cf)
+![d6](https://github.com/UCSD-ECEMAE-148/spring-2023-final-project-team-12/assets/130114883/0d391b2e-c01d-4f0b-a76a-01e242841ca1)
+![d7](https://github.com/UCSD-ECEMAE-148/spring-2023-final-project-team-12/assets/130114883/ae1a0723-30df-4738-bf8e-9bea885a8819)
 
 ## Autonomous Laps Videos
 
