@@ -118,7 +118,7 @@ https://docs.google.com/presentation/d/1ykZrViwCvIwv0nYjjEKjMLFS0MpZMi5blVBvs2Jc
 #### SLAM Toolbox
 (Credit: Raymond from DSC 178)
 
-Follow the instructions in pdf
+Follow the instructions in docs
 
 https://docs.google.com/document/d/1eUxEY5loVYTPH8-Mi8he468MwqytkhGQesTpLuJlpZI/edit?usp=sharing
 
