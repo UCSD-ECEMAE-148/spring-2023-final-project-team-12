@@ -35,17 +35,33 @@ https://youtu.be/GnItAcpV_7A
 ### Proposal
 
 ### Gantt Chart 
-
-
 <p align="center">
-  <img src="https://github.com/UCSD-ECEMAE-148/spring-2023-final-project-team-12/assets/130114883/d92e02f2-502b-45cb-a707-6ad5d4f0bbb0" width="500">
+  <img src="https://github.com/UCSD-ECEMAE-148/spring-2023-final-project-team-12/assets/130114883/08888e16-98e5-41c3-b30c-a7ba28e0d3d1" width="500">
 </p>
-### Videos
 
-### Source Code 
+### Implementation 
+#### Including SLAM
+  
+#### Including DonkeyCar Depth
+In jetson:
+```
+  gedit projects/donkeycar/donkeycar/parts/camera.py
+```
+Copy and paste camera.py (Changing the blue color to take depth input) (Credit: Girish from DSC 178)
+
+### Pictures and Videos
+<p align="center">
+  <img src="https://github.com/UCSD-ECEMAE-148/spring-2023-final-project-team-12/assets/130114883/7f6b30d8-e508-48d5-ba33-9d4fb6226fee" width="400">
+</p>
+DonkeyCar allows 3 channel from the camera so Red and Green is used with Blue to visualize depth
+
+https://github.com/UCSD-ECEMAE-148/spring-2023-final-project-team-12/assets/130114883/9fe1a51f-9874-41fa-ab0a-ea6c5f6554a9
+
 
 ## Presentations
 
 ### Weekly Presentations 
+https://docs.google.com/presentation/d/10cdow0kZToZQNKFimAG8-7LkItVgFZkWeKg42pyX16M/edit?usp=sharing
 
 ### Final Presentation
+https://docs.google.com/presentation/d/1ykZrViwCvIwv0nYjjEKjMLFS0MpZMi5blVBvs2Jc6pE/edit?usp=sharing
