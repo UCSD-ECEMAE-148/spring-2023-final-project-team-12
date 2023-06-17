@@ -201,7 +201,6 @@ class OAKD(BaseCamera):
 
     def __init__(self, image_w=160, image_h=120, image_d=3, framerate = 20, camera_index=0):
         
-        
         super().__init__()
 
         # initialize variable used to indicate
@@ -222,34 +221,7 @@ class OAKD(BaseCamera):
         self.resolution = (image_w, image_h)
         self.pipeline = dai.Pipeline()
 
-        # Define a source - color camera
-        self.camRgb = self.pipeline.create(dai.node.ColorCamera)
-        self.camRgb.setPreviewSize(self.image_w, self.image_h)
-        self.camRgb.setInterleaved(False)
-
-
-        self.videoEnc = self.pipeline.create(dai.node.VideoEncoder)
-
-        
-        self.camControlIn = self.pipeline.create(dai.node.XLinkIn)
-        self.camControlIn.setStreamName('camControl')
-        self.camControlIn.out.link(self.camRgb.inputControl)
-
-
-        # # Create output
-        self.xoutRgb = self.pipeline.createXLinkOut()
-        self.xoutRgb.setStreamName("rgb")
-
-        self.xoutRgb_video = self.pipeline.createXLinkOut()
-        self.xoutRgb_video.setStreamName("video")
-
-        
-        self.camRgb.preview.link(self.xoutRgb.input)
-        self.videoEnc.setDefaultProfilePreset(30, dai.VideoEncoderProperties.Profile.H265_MAIN)
-        self.camRgb.video.link(self.videoEnc.input)
-        self.videoEnc.bitstream.link(self.xoutRgb_video.input)
-
-	# Define sources - two mono (grayscale) cameras for stereo effect
+        # Define sources - two mono (grayscale) cameras for stereo effect
         self.left = self.pipeline.createMonoCamera()
         self.right = self.pipeline.createMonoCamera()
 
@@ -277,46 +249,31 @@ class OAKD(BaseCamera):
         self.device = dai.Device(self.pipeline)
         self.start_time =time.time()
         while True:
-            controlQueue = self.device.getInputQueue('camControl')
-            ctrl = dai.CameraControl()
             self.device.startPipeline()
-            #ctrl.setAutoExposureEnable()
-            controlQueue.send(ctrl)
             self.end_time =time.time()
             if ((self.end_time -self.start_time )>6):
-                self.qRgb = self.device.getOutputQueue(name="rgb",maxSize=4, blocking=False)
-                self.qRgb_video = self.device.getOutputQueue(name="video",maxSize=4, blocking=True)
-                self.videofile = open ('output_video.h265','wb')
                 self.qDepth = self.device.getOutputQueue(name="depth",maxSize=4, blocking=False)
+                
                 print("Exposure set for the current environment...OAKD STARTED........")
                 break
 
-
-    def run(self,qRgb,qRgb_video):
-        inRgb = qRgb.get()
-        inDepth = self.qDepth.get()
-        depth_frame = inDepth.getFrame()
-        depth_frame_resized = cv2.resize(depth_frame, (self.image_w, self.image_h))
-        self.frame  = inRgb.getCvFrame()
-        self.frame   = cv2.cvtColor(self.frame,cv2.COLOR_BGR2RGB)
-        inRgb_video = qRgb_video.get()
-        inRgb_video.getData().tofile(self.videofile)
-        #print("Image_Captured")
-        self.frame[:,:,2] = depth_frame_resized
+    def run(self,qDepth):
+        inDepth = qDepth.get() 
+        self.frame  = inDepth.getFrame()
         return self.frame     
 
-    def update(self):	
+    def update(self):    
         from datetime import datetime, timedelta
         while self.on:
             start = datetime.now()
-            self.run(self.qRgb,self.qRgb_video)
+            self.run(self.qDepth)
             stop = datetime.now()
             s = 1 / self.framerate - (stop - start).total_seconds()
             if s > 0:
                 time.sleep(s)
 
     def run_threaded(self):
-	    return self.frame
+        return self.frame
 	    
     def shutdown(self):
         
