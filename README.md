@@ -40,6 +40,11 @@ Optimized Body
 
 <img src="https://github.com/UCSD-ECEMAE-148/spring-2023-final-project-team-12/assets/130114883/1cfeed3c-b2c4-4d25-87c2-12d4c7d99497" width="575">
 
+3D Files
+
+<img src="https://github.com/UCSD-ECEMAE-148/spring-2023-final-project-team-12/assets/130114883/26fa852b-b14d-436e-98af-5f970058f0de" width="200">
+<img src="https://github.com/UCSD-ECEMAE-148/spring-2023-final-project-team-12/assets/130114883/d96113dc-ec26-4e3c-bc32-a9ef4e75de50" width="200">
+<img src="https://github.com/UCSD-ECEMAE-148/spring-2023-final-project-team-12/assets/130114883/94bfb155-58e2-4867-8d33-d434eee093ab" width="200">
 
 
 ## Autonomous Laps Videos
