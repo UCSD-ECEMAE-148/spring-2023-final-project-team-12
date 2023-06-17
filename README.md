@@ -29,10 +29,13 @@ https://youtu.be/7cZigr_Hb0k
 https://youtu.be/GnItAcpV_7A
 
 ## Final Project
-### Overview
+### Project Proposal
 
+The goal for our project was to create a car capable of racing in the DIY Robocar Race held in Oakland California at the end of the quarter. We would use lidar and camera to establish which is best in producing an autonomous vehicle that is capable of racing at speed. We would also streamline the design of our car, refining it and moving it from a prototype stage to a more 
 
-### Proposal
+### Project Overview
+
+The focus of our project started with the lidar. This is because after viewing how SLAM (Simultaneous Localization and Mapping) worked we believed that it would be the more flexible and consistent option of the two. SLAM works by using a combination of lidar and odometer data in order to create a map of its surroundings using multiple transforms which can be considered reference points to triangulate location. We started with generating the map in ROS using the Hector SLAM. This went pretty well and we were able to generate a good looking map by doing some basic troubleshooting like relocating the lidar and going slow while mapping.We then attempted to use the generated map in NAV1 in order to allow the robot to localize itself in the map and then move itself autonomously. This is where we started encountering significant issues. The robot would not be able to localize itself within NAV1 and as a result could not move within the map. Attempting to find documentation that could help us troubleshoot NAV1 was almost non-existent so we moved on to another option which was to use the SLAM toolbox which is a separate SLAM algorithm that operates in ROS2. We did this as there was far more comprehensive documentation for this compared to Hector SLAM. However, the problem we encountered was the fact that the transforms created for the robot were specifically designed to work with Hector SLAM and not SLAM toolbox which meant that the robot was not able to find the reference points needed to determine its location while mapping, preventing us from even mapping. We tried numerous methods to try to solve this problem like adjusting the urdf file for the machine and trying to track down the transforms causing problems but despite our best efforts we were unable to get SLAM toolbox to a point where it would be able to generate a proper map. Due to the difficulties with SLAM we decided to pivot our main focus to the camera which would use donkey car AI training in order to autonomously race. We attempted to integrate the depth function for the OakD lite with the color camera in order to allow for the car to detect obstacles in front of it. We were able to get the robot to recognize the orange traffic cones in front of it and avoid them. However this is unfortunately where our endeavors ended as we did not have enough time to refine the training in order to create an autonomous race car that could race at speed.
 
 ### Gantt Chart 
 <p align="center">
